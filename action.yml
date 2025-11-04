@@ -8,9 +8,12 @@ inputs:
   project-target:  # id of input
     description: 'Which target in the STM32CubeIde project to build. Format: target/[build-configuration]'
     required: true
+  additional-defines:
+    description: 'Newline-delimited list of additional preprocessor defines to be set during build.'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.project-path }}
     - ${{ inputs.project-target }}
+    - "${{ inputs.additional-defines }}"

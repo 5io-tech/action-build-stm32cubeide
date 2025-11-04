@@ -13,6 +13,10 @@ This action builds a STM32CubeIde project
 **Required** Target in the STM32CubeIde project file to build. Format: target/[build-configuration]
 note: When no build-configuration is given all the projects configuration are build
 
+### `additional-defines`
+
+Newline-delimited list of additional preprocessor defines to use during build.
+
 ## Example usage
 
 Building only the Debug configuration:
@@ -29,6 +33,17 @@ Building all the configurations (Debug/Release):
   with:
     project-path: 'applications/sample_application/targets/STM32'
     project-target: 'sample_application'
+```
+
+Building only the Release configuration with additional preprocessor defines:
+```yaml
+- uses: xanderhendriks/action-build-stm32cubeide@v10.0
+  with:
+    project-path: 'applications/sample_application/targets/STM32'
+    project-target: 'sample_application/Release'
+    additional-defines: |
+      SOME_FLAG
+      SOME_OTHER_VALUE=42
 ```
 
 A working STM32 application example can be found here: [xanderhendriks/stm32-sample-application](https://github.com/xanderhendriks/stm32-sample-application)
